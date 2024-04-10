@@ -18,11 +18,8 @@ app.use(function(req, res, next){
   next();
 })
 
-app.post('/api/fileanalyse', upload.single('upfile'), function(req, res, next){
-  console.log(req.file.originalname);
-  console.log(req.file.mimetype);
-  console.log(req.size);
-  next();
+app.post('/api/fileanalyse', upload.single('upfile'), function(req, res){
+  res.json({name: req.file.originalname, type: req.file.mimetype, size: req.file.size})
 })
 
 
